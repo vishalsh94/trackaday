@@ -1,0 +1,56 @@
+{
+  "id": "TrackADaySchema",
+  "title": "TrackADaySchema",
+  "description": "List of tasks and sessions in a day.",
+  "type": "object",
+  "properties": {
+    "tasks": [
+      {
+        "taskId": {
+          "type": "string"
+        },
+        "timeStamps": [
+          {
+            "startTime": {
+              "type": "string"
+            },
+            "endTime": {
+              "type": "string"
+            },
+            "sessionId": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    ],
+    "session": [
+      {
+        "sessionId": {
+          "type": "string"
+        },
+        "startTime": {
+          "type": "string"
+        },
+        "endTime": {
+          "type": "string"
+        },
+        "breakTime": [
+          {
+            "startTime": {
+              "type": "string"
+            },
+            "endTime": {
+              "type": "string"
+            }
+          }
+        ],
+        "taskIds": [
+          {
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+}
