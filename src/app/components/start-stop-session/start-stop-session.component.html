@@ -1,8 +1,19 @@
-<!--Timer with pause/play button-->
-<button mat-button color="primary" aria-label="Example icon button with a pause icon" id="pause_button">
-    <mat-icon>pause</mat-icon>
-  </button>
-
-  <button mat-button color="primary" aria-label="Example icon button with a play icon" id="play_button">
-    <mat-icon>play_arrow</mat-icon>
-  </button>
+<div class="container">
+  <p class="message">{{message}}</p>
+  <div class="timer-container">
+    <div class="minutes">{{strMinutes}}</div>
+    <div class="middle">:</div>
+    <div class="seconds">{{strSeconds}}</div>
+  </div>
+  <div class="buttons">
+    <button id="play" class="btn-black" (click)="startTimer()" *ngIf="status === 'STOP' || status === 'PAUSE'">
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+    <button id="pause" class="btn-black" (click)="pauseTimer()" *ngIf="status === 'RUNNING'">
+      <mat-icon>pause</mat-icon>
+    </button>
+    <button id="stop" class="btn-black" (click)="stopTimer()" *ngIf="status === 'RUNNING' || status === 'PAUSE'">
+      <mat-icon>stop</mat-icon>
+    </button>
+  </div>
+</div>

@@ -7,11 +7,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartStopSessionComponent } from './components/start-stop-session/start-stop-session.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TodoComponent } from './components/todo/todo.component';
+import { TodoFormComponent } from './components/todo-form/todo-form.component';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartStopSessionComponent
+    StartStopSessionComponent,
+    TodoComponent,
+    TodoFormComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
