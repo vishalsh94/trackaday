@@ -1,1 +1,15 @@
 <app-start-stop-session></app-start-stop-session>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <span class="navbar-brand">My TODO List</span>
+    <div class="navbar-nav">
+        <!-- <a class="nav-item nav-link" href="#">LIST</a>
+        <a class="nav-item nav-link" href="#">ADD</a> -->
+        <a class="nav-item nav-link" routerLink="/add" routerLinkActive="text-danger">ADD</a>
+        <a class="nav-item nav-link" routerLink="/list" routerLinkActive="text-danger">LIST</a>
+    </div>
+</nav>
+<div class="container">
+    <!-- <app-todo-form></app-todo-form>
+    <app-todo-list></app-todo-list> -->
+    <router-outlet></router-outlet>
+</div>

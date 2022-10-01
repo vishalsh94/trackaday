@@ -54,6 +54,9 @@ export class TodoService {
   }
 
   updateFav(){
-    this.fav = JSON.parse(localStorage.getItem('favorite'));
+    // if(localStorage.getItem('favorite'))
+    // {
+    // this.fav = JSON.parse(localStorage.getItem('favorite'));
+    // }
   }
 }

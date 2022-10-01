@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+@import '~bootswatch/dist/yeti/bootstrap.css';
+@import '~font-awesome/css/font-awesome.css';
+html,
+body {
+    height: 100%;
+}
 
 body {
     height: 100vh;
     background: #66b2ff;
     font-family: Lato;
+    margin: 0;
   }
