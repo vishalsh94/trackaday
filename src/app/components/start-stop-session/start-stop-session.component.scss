@@ -10,8 +10,8 @@
   
   .timer-container {
     font-size: 200px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     line-height: 1;
   
     display: flex;
@@ -29,16 +29,17 @@
   }
   
   .btn-black {
-    width: 3em;
-    height: 3em;
+    width: 4em;
+    height: 4em;
     background: #000;
     color: #FFF;
-    margin: 5px;
+    margin: 40px;
     border-radius: 10px;
     font-size: 1em;
   }
   
   .message {
     font-size: 1.5em;
+    padding: 30px;
   }
   
