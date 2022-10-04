@@ -24,6 +24,7 @@
     "@angular/router": "^14.2.0",
     "bootswatch": "^5.2.1",
     "font-awesome": "^4.7.0",
+    "materialize-css": "^1.0.0-rc.2",
     "ngx-toastr": "^15.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

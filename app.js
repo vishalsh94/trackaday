@@ -9,10 +9,13 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    minWidth: 520,
+    minHeight: 520,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,
-      preload: path.resolve("./src/preload.js")
+      preload: path.resolve("./src/preload.js"),
+      devTools: false
     }
   })
 
