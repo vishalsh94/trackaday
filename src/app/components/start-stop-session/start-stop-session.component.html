@@ -1,19 +1,16 @@
-<div class="container">
-  <p class="message">{{message}}</p>
-  <div class="timer-container">
-    <div class="minutes">{{strMinutes}}</div>
-    <div class="middle">:</div>
-    <div class="seconds">{{strSeconds}}</div>
-  </div>
-  <div class="buttons">
-    <button id="play" class="btn-black" (click)="startTimer()" *ngIf="status === 'STOP' || status === 'PAUSE'">
-      <mat-icon>play_arrow</mat-icon>
-    </button>
-    <button id="pause" class="btn-black" (click)="pauseTimer()" *ngIf="status === 'RUNNING'">
-      <mat-icon>pause</mat-icon>
-    </button>
-    <button id="stop" class="btn-black" (click)="stopTimer()" *ngIf="status === 'RUNNING' || status === 'PAUSE'">
-      <mat-icon>stop</mat-icon>
-    </button>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title message">{{message}}</span>
+    <div class="center-align">
+      <a id="play" style="margin: 8px;" class="btn-floating btn-large waves-effect waves-light red" (click)="startTimer()" *ngIf="status === 'STOP' || status === 'PAUSE'"><i class="material-icons">play_arrow</i></a>
+      
+      <a id="pause" style="margin: 8px;" class="btn-floating btn-large waves-effect waves-light red" (click)="pauseTimer()" *ngIf="status === 'RUNNING'"><i class="material-icons">pause</i></a>
+      <a id="stop" style="margin: 8px;" class="btn-floating btn-large waves-effect waves-light red" (click)="stopTimer()" *ngIf="status === 'RUNNING' || status === 'PAUSE'"><i class="material-icons">stop</i></a>
+    </div>
+    <p class="center-align" style="margin-top: 16px; font-size: xx-large;">
+      <span class="minutes">{{strMinutes}}</span>
+      <span class="middle">:</span>
+      <span class="seconds">{{strSeconds}}</span>
+    </p>
   </div>
 </div>
