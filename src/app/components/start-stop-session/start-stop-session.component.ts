@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PromptComponent } from '../prompt/prompt.component';
 
 const timerMessages = {
   start: 'Let the countdown begin!!',
@@ -28,8 +30,9 @@ export class StartStopSessionComponent implements OnInit {
   totalSeconds: number = TOTAL_SECONDS;
   timerId: any = null;
   status = Status.STOP;
+  promptComponent: PromptComponent | undefined;
 
-  constructor() { }
+  constructor(private dialogRef: MatDialog) { }
 
   ngOnInit() {
     this.message = timerMessages.start;
@@ -59,6 +62,13 @@ export class StartStopSessionComponent implements OnInit {
   startTimer() {
     this.setStatus(Status.RUNNING);
     this.countdown();
+    this.startCheckpointTimerLoop();
+  }
+
+  startCheckpointTimerLoop() {
+    this.openDialog();
+    // setInterval(() => {
+    //   this.openDialog();},3600000)
   }
 
   pauseTimer() {
@@ -90,4 +100,9 @@ export class StartStopSessionComponent implements OnInit {
     }
   }
 
+  openDialog()
+  { 
+    this.dialogRef.closeAll()
+    this.dialogRef.open(PromptComponent);
+  }
 }
