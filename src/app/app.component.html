@@ -1,19 +1,20 @@
 <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Track-a-day</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <!-- <li><a class="nav-item nav-link" routerLink="/add" routerLinkActive="text-danger">ADD-TODO</a></li> -->
-        <!-- <li><a class="nav-item nav-link" routerLink="/list" routerLinkActive="text-danger">LIST-TODO</a></li> -->
-      </ul>
-    </div>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Track-a-day</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <!-- <li><a class="nav-item nav-link" routerLink="/add" routerLinkActive="text-danger">ADD-TODO</a></li> -->
+      <!-- <li><a class="nav-item nav-link" routerLink="/list" routerLinkActive="text-danger">LIST-TODO</a></li> -->
+      <li><a class="nav-item nav-link" routerLink="/analysis" routerLinkActive="text-danger">Analysis</a></li>
+    </ul>
+  </div>
 </nav>
 
 <div class="row">
-    <div class="col s4">
-        <app-start-stop-session></app-start-stop-session>
-    </div>
+  <div class="col s4">
+    <app-start-stop-session></app-start-stop-session>
+  </div>
 
-    <div class="col s8">
-        <router-outlet></router-outlet>
-    </div>
+  <div class="col s8">
+    <router-outlet></router-outlet>
+  </div>
 </div>
