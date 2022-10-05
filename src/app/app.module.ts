@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { RouterModule, Route } from '@angular/router';
+import { PromptComponent } from './components/prompt/prompt.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 
 const routes: Route[] = [
@@ -28,7 +31,9 @@ const routes: Route[] = [
     StartStopSessionComponent,
     TodoComponent,
     TodoFormComponent,
-    TodoListComponent
+    TodoListComponent,
+    PromptComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,7 @@ const routes: Route[] = [
     ToastrModule.forRoot(),
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
