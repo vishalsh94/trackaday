@@ -22,6 +22,7 @@ const TOTAL_SECONDS = 0;
 export class StartStopSessionComponent implements OnInit {
 
   message: string = '';
+  strHours: string = '';
   strMinutes: string = '';
   strSeconds: string = '';
   totalSeconds: number = TOTAL_SECONDS;
@@ -47,9 +48,10 @@ export class StartStopSessionComponent implements OnInit {
 
   displayTime() {
     const seconds = this.totalSeconds % 60;
-    const minutes = Math.floor((this.totalSeconds - seconds) / 60);
-    //const hours = Math.floor((this.totalSeconds - seconds) / 60);
+    const minutes = Math.floor((this.totalSeconds / 60) % 60);
+    const hours = Math.floor(this.totalSeconds / 3600);
 
+    this.strHours = (hours < 10) ? `0${hours}` : `${hours}`;
     this.strMinutes = (minutes < 10) ? `0${minutes}` : `${minutes}`;
     this.strSeconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;;
   }
