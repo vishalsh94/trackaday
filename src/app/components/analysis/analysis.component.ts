@@ -26,15 +26,15 @@ export class AnalysisComponent implements OnInit {
   }
 
   createTimeTrackigStatsChart() {
-    const timeTrackingStats = getTimeTrackingStats();
-
+    let  stats = getTimeTrackingStats();
+    const timeTrackingStats = stats[0];
     // for (var i = 0; i < 5; i++) {
     //   timeTrackingStats = timeTrackingStats.concat(timeTrackingStats);
     // }
 
-    const labelsList = timeTrackingStats.map(val => val[0]);
+    const labelsList = timeTrackingStats.map((val: any[]) => val[0]);
 
-    const dataList = timeTrackingStats.map(val => val[1]);
+    const dataList = timeTrackingStats.map((val: any[]) => val[1]);
 
     const backgroundColorList = [
       'rgba(255, 99, 132, 0.2)',
