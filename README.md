@@ -1,3 +1,6 @@
+![alt text](https://github.com/arnab-95/trackaday/blob/main/screenshot.png?raw=true)
+
+
 # Trackaday
 
 This is a desktop application to track and improve your productivity.
