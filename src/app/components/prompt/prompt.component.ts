@@ -21,19 +21,19 @@ export class PromptComponent implements OnInit {
   
   qoutes = [
     "Good Work!!", 
-    "Keep it up!! you are doing great.",
-    "Nothing is impossible",
+    "Keep it up!! You are doing great!",
+    "Nothing is impossible!",
     "Stay Hydrated !!",
-    "Dont Give up You can achieve it",
-    "Dont Wish for it Work for it",
-    "Dont let yesterday take too much of today",
-    "It mightnot be easy but it'll be worth it",
-    "Believe you can and you are halfway there",
-    "Stay Hopeful",
-    "Make each day your masterpiece",
-    "Dont stop Keep Going",
-    "Focus",
-    "Be a voice not an echo"
+    "Dont Give up. You can achieve it!",
+    "Dont Wish for it, Work for it!",
+    "Dont let yesterday take too much of today.",
+    "It might not be easy but it'll be worth it.",
+    "Believe you can and you are halfway there.",
+    "Stay hopeful.",
+    "Make each day your masterpiece.",
+    "Dont stop. Keep going!",
+    "Focus.",
+    "Be a voice not an echo."
   ]
 
   public getQoute(){
