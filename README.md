@@ -1,3 +1,6 @@
+![Screenshot](https://github.com/arnab-95/trackaday/blob/main/images/screenshot.png?raw=true)
+
+
 # Trackaday
 
 This is a desktop application to track and improve your productivity.
