@@ -2,9 +2,6 @@ import { OnInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Chart, Point, registerables } from "chart.js";
 import { getTaskTrackingStats, getTimeTrackingStats } from 'src/app/stats/stats';
 
-// const M = require("../node_modules/materialize-css/dist/js/materialize.min.js")
-// M.AutoInit()
-
 Chart.register(...registerables);
 
 
@@ -15,8 +12,6 @@ Chart.register(...registerables);
 })
 
 export class AnalysisComponent implements OnInit {
-  // @ViewChild('chart') chart: Chart;
-  // private chart: Chart;
   private data: Point[];
 
   constructor() {
@@ -24,17 +19,6 @@ export class AnalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // document.addEventListener('DOMContentLoaded', function () {
-    //   var elems = document.querySelectorAll('.collapsible');
-    //   var instances = M.Collapsible.init(elems);
-    // });
-
-    // Or with jQuery
-
-    // $(document).ready(function () {
-    //   $('.collapsible').collapsible();
-    // });
-
     this.createTimeTrackigStatsChart();
     this.createTaskTrackingList();
     this.createHourlyTrackingList();
@@ -43,9 +27,6 @@ export class AnalysisComponent implements OnInit {
   createTimeTrackigStatsChart() {
     let stats = getTimeTrackingStats();
     const timeTrackingStats = stats[0];
-    // for (var i = 0; i < 5; i++) {
-    //   timeTrackingStats = timeTrackingStats.concat(timeTrackingStats);
-    // }
 
     const labelsList = timeTrackingStats.map((val: any[]) => val[0]);
 
@@ -80,27 +61,18 @@ export class AnalysisComponent implements OnInit {
           borderColor: Array(labelsList.length).fill(0).map((_, index) => borderColorList[index % borderColorList.length]),
           borderWidth: 1
         }]
-      },
-      // options: {
-      //   scales: {
-      //     y: {
-      //       beginAtZero: true
-      //     }
-      //   }
-      // }
+      }
     });
 
-    console.log(myChart);
   }
 
   callAbc() {
-    console.log(111111);
   }
 
   createTaskTrackingList() {
     const taskTrackingStatsList = getTaskTrackingStats();
-    console.log(taskTrackingStatsList, "taskTrackingStatsList");
 
+    // Implementation for collapsible task list
     let taskTrackingElement = "";
     Object.keys(taskTrackingStatsList).map(day => {
       let taskUL = "<ul>";
@@ -122,10 +94,6 @@ export class AnalysisComponent implements OnInit {
   createHourlyTrackingList() {
     let stats = getTimeTrackingStats();
     const timeTrackingStats = stats[1];
-
-    // for (var i = 0; i < 5; i++) {
-    //   timeTrackingStats = timeTrackingStats.concat(timeTrackingStats);
-    // }
 
     const labelsList = Array(24).fill(0).map((_, index) => index);
 
@@ -160,17 +128,9 @@ export class AnalysisComponent implements OnInit {
           borderColor: Array(labelsList.length).fill(0).map((_, index) => borderColorList[index % borderColorList.length]),
           borderWidth: 1
         }]
-      },
-      // options: {
-      //   scales: {
-      //     y: {
-      //       beginAtZero: true
-      //     }
-      //   }
-      // }
+      }
     });
 
-    console.log(myChart);
 
   }
 }
