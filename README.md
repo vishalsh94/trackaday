@@ -1,4 +1,4 @@
-![Screenshot](https://github.com/arnab-95/trackaday/blob/main/images/screenshot.png?raw=true)
+![Screenshot](https://github.com/arnab-95/trackaday/blob/main/images/screenshot.jpg?raw=true)
 
 
 # Trackaday
