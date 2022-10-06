@@ -1,4 +1,4 @@
-![alt text](https://github.com/arnab-95/trackaday/blob/main/screenshot.png?raw=true)
+![alt text]([https://github.com/arnab-95/trackaday/blob/main/screenshot.png](https://github.com/arnab-95/trackaday/blob/main/images/screenshot.png)?raw=true)
 
 
 # Trackaday
