@@ -4,14 +4,14 @@
     <!-- <li class="list-group-item" [ngClass]="completed ? 'list-group-item-success'  : 'list-group-item-danger' "> -->
     <!-- <li class="list-group-item" [class.list-group-item-success]="completed"> -->
     <div class="row">
-        <div class="col s10">
+        <div class="col s11">
             <div class="form-check d-inline">
-                <label for="complete">
+                <label>
                 <input type="checkbox" class = "form-check-input" id="complete" (change)="onChange()">
                 <span class="form-check-label lead">{{todoInput.title}}</span>
             </label>
             </div>
-            <span style="padding-left: 34px;">{{todoInput.date | date}}</span>
+            <span style="padding-left: 35px;">{{todoInput.date | date}}</span>
         </div>
 
         <div class="col s1">

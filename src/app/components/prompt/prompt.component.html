@@ -1,7 +1,12 @@
-<div class="card">
-    <div class="card-content">
-        <span class="card-title">Are you on track?</span>
-        <a class="waves-effect waves-light btn">YES</a>
-        <a class="waves-effect waves-light btn">NO</a>
+<div id="checkpoint-modal" class="">
+    <div class="modal-content">
+        <h2>Hourly Checkpoint</h2>
+        <p>Mark completed tasks in the ToDo List.</p>
+
+        <blockquote style="font-size: large;" id="chechpoint-qoute">
+            <br>{{this.qoute}}<br><br></blockquote>
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-light btn" (click)="closePrompt()">Okay</a>
     </div>
 </div>

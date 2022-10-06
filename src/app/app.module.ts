@@ -19,7 +19,7 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 
 const routes: Route[] = [
-  { path: '', redirectTo: '/analysis', pathMatch: 'full' },
+  { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'add', component: TodoFormComponent },
   { path: 'list', component: TodoListComponent },
   { path: 'analysis', component: AnalysisComponent },
