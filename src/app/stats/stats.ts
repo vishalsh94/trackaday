@@ -69,35 +69,35 @@ var data = {
   ]
 };
 
-function initialise_average_hourly_stats(averageHourlyStats: any){
-  for (let hour=0; hour < 24; hour++){
-      averageHourlyStats[hour] = 0;
+function initialise_average_hourly_stats(averageHourlyStats: any) {
+  for (let hour = 0; hour < 24; hour++) {
+    averageHourlyStats[hour] = 0;
   }
 }
 
-function add_or_remove_hours(hour: any, hour_fraction: any, daysSoFar: any, averageHourlyStats: any, toAdd: any){
-  if (toAdd){
-    averageHourlyStats[hour] = ((averageHourlyStats[hour]*(daysSoFar-1)) + hour_fraction)/daysSoFar;
+function add_or_remove_hours(hour: any, hour_fraction: any, daysSoFar: any, averageHourlyStats: any, toAdd: any) {
+  if (toAdd) {
+    averageHourlyStats[hour] = ((averageHourlyStats[hour] * (daysSoFar - 1)) + hour_fraction) / daysSoFar;
   }
-  else{
-    averageHourlyStats[hour] = ((averageHourlyStats[hour]*(daysSoFar-1)) - hour_fraction)/daysSoFar;
+  else {
+    averageHourlyStats[hour] = ((averageHourlyStats[hour] * (daysSoFar - 1)) - hour_fraction) / daysSoFar;
   }
 }
 
-function add_hour_data(startDate: any, endDate: any, daysSoFar: any, averageHourlyStats: any, toAdd: any){
+function add_hour_data(startDate: any, endDate: any, daysSoFar: any, averageHourlyStats: any, toAdd: any) {
   let startHour = startDate.getUTCHours();
   let endHour = endDate.getUTCHours();
   let hour = startHour;
-  while (hour <= endHour){
-    if (hour == startHour){
-      let hour_fraction = (startDate.getUTCMinutes())/60;
+  while (hour <= endHour) {
+    if (hour == startHour) {
+      let hour_fraction = (startDate.getUTCMinutes()) / 60;
       add_or_remove_hours(hour, hour_fraction, daysSoFar, averageHourlyStats, toAdd);
     }
-    else if (hour == endHour){
-      let hour_fraction = (endDate.getUTCMinutes())/60;
+    else if (hour == endHour) {
+      let hour_fraction = (endDate.getUTCMinutes()) / 60;
       add_or_remove_hours(hour, hour_fraction, daysSoFar, averageHourlyStats, toAdd);
     }
-    else{
+    else {
       add_or_remove_hours(hour, 1, daysSoFar, averageHourlyStats, toAdd);
     }
     hour += 1;

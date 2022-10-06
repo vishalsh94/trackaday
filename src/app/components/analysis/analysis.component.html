@@ -1,14 +1,28 @@
-<li class="list-group-item">
-    <!-- <li class="list-group-item" [ngClass]="{'list-group-item-success' : completed, 'border-primary' : completed}"> -->
-    <!-- <li class="list-group-item" [ngStyle]="{'background-color: 'completed? 'red : green'}"> -->
-    <!-- <li class="list-group-item" [ngClass]="completed ? 'list-group-item-success'  : 'list-group-item-danger' "> -->
-    <!-- <li class="list-group-item" [class.list-group-item-success]="completed"> -->
-    <div>
-        <h1>Time Tracking Stats</h1>
-        <canvas id="timeTrackingStats" width="600" height="200"></canvas>
-    </div>
-    <div>
-        <h1>Task Tracking Stats</h1>
-        <ul id="taskTrackingStats"></ul>
-    </div>
-</li>
+<div>
+
+    <li class="list-group-item">
+        <!-- <li class="list-group-item" [ngClass]="{'list-group-item-success' : completed, 'border-primary' : completed}"> -->
+        <!-- <li class="list-group-item" [ngStyle]="{'background-color: 'completed? 'red : green'}"> -->
+        <!-- <li class="list-group-item" [ngClass]="completed ? 'list-group-item-success'  : 'list-group-item-danger' "> -->
+        <!-- <li class="list-group-item" [class.list-group-item-success]="completed"> -->
+        <div>
+            <h1>Time Tracking Stats</h1>
+            <canvas id="timeTrackingStats" width="600" height="200"></canvas>
+        </div>
+
+        <br />
+
+        <div>
+            <h1>Task Tracking Stats</h1>
+            <ul id="taskTrackingStats" class='collapsible'>
+            </ul>
+        </div>
+
+        <br />
+
+        <div>
+            <h1>Hourly Tracking Stats</h1>
+            <canvas id="hourlyTrackingStats" width="600" height="200"></canvas>
+        </div>
+    </li>
+</div>
