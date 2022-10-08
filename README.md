@@ -1,7 +1,7 @@
 ![Screenshot](https://github.com/vishalsh94/trackaday/blob/main/images/screenshot.jpg?raw=true)
 
 
-<h2 align="center">Boost Your Daily Productivity</h2>
+<h2 align="center">Track-a-Day</h2>
 
 <!--<a href="https://github.com/arnab-95/se-group38-hw/actions"><img alt="Build Status" src="https://github.com/arnab-95/se-group38-hw/workflows/build/badge.svg"></a> -->
 
@@ -13,7 +13,12 @@
 > “Your accountability partner for focused work.”
 
 
-This is a desktop application to track and improve your productivity.
+
+This desktop programme helps you monitor and enhance your productivity.
+
+A desktop programme called Track-a-Day can be utilized to keep track of daily chores. The tasks that users wish to finish are added.
+The user then adjusts the timer to retain track of their progress. Every hour, a pop-up encourages the user with an encouraging phrase. After the timer has begun, a pause and stop button is presented. The timer can be halted by users for breaks. Users can suspend the timer at the end of the day to get an overview of the current session.
+User can access a report on their session evaluation. Users receive up to 30 sessions to assess.
 
 
 ## Installation and Usage
