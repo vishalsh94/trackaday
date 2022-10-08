@@ -16,7 +16,7 @@
 
 This desktop programme helps you monitor and enhance your productivity.
 
-A desktop programme called Track-a-Day can be utilized to keep track of daily chores. The tasks that users wish to finish are added.
+A desktop programme called Track-a-Day can be utilized to keep track of daily tasks. The tasks that users wish to finish are added.
 The user then adjusts the timer to retain track of their progress. Every hour, a pop-up encourages the user with an encouraging phrase. After the timer has begun, a pause and stop button is presented. The timer can be halted by users for breaks. Users can suspend the timer at the end of the day to get an overview of the current session.
 User can access a report on their session evaluation. Users receive up to 30 sessions to assess.
 
