@@ -1,40 +1,22 @@
 <li class="list-group-item" [ngClass]="toggleClass()">
-    <!-- <li class="list-group-item" [ngClass]="{'list-group-item-success' : completed, 'border-primary' : completed}"> -->
-    <!-- <li class="list-group-item" [ngStyle]="{'background-color: 'completed? 'red : green'}"> -->
-    <!-- <li class="list-group-item" [ngClass]="completed ? 'list-group-item-success'  : 'list-group-item-danger' "> -->
-    <!-- <li class="list-group-item" [class.list-group-item-success]="completed"> -->
-    <div class="row">
+    <div class="row" *ngIf="!todoInput.isArchived">
         <div class="col s10">
             <div class="form-check d-inline">
-                <label for="complete">
+                <label>
                 <input type="checkbox" class = "form-check-input" id="complete" (change)="onChange()">
                 <span class="form-check-label lead">{{todoInput.title}}</span>
             </label>
             </div>
-            <span style="padding-left: 34px;">{{todoInput.date | date}}</span>
+            <span style="padding-left: 35px;">{{todoInput.date | date}}</span>
         </div>
 
-        <div class="col s1">
-            <a class="btn-floating waves-effect waves-light" (click)="deleteTodo(todoInput)">
-                <i class="material-icons red darken-2">delete</i>
-            </a> 
-        </div>
-
-
-    </div>
-    
-    <div class="float-right">
-        <div class="row">
-
-            <div class="col s1"></div>
-                       
-         
-            <div class="col s11">
-                
-                <!-- <button class="btn btn-danger btn-sm mx-3" (click)="onCliCk($event)">x</button> -->
-                <!-- <button class="btn btn-danger btn-sm mx-3" (click)="todoService.deleteTodo(todoInput)">x</button> -->        
-            </div>
-
+        <div class="col s2">
+            <a class="btn-floating waves-effect waves-light" (click)="deleteTodo(todoInput)" *ngIf="!todoInput.isCompleted">
+                <i class="material-icons red darken-2" >delete</i>
+            </a>
+            <a class="btn-floating waves-effect waves-light" (click)="deleteTodo(todoInput)" *ngIf="todoInput.isCompleted">
+                <i class="material-icons green darken-2">archive</i>
+            </a>
         </div>
     </div>
 </li>

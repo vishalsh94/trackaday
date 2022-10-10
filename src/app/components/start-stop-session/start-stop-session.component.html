@@ -8,6 +8,8 @@
       <a id="stop" style="margin: 8px;" class="btn-floating btn-large waves-effect waves-light red" (click)="stopTimer()" *ngIf="status === 'RUNNING' || status === 'PAUSE'"><i class="material-icons">stop</i></a>
     </div>
     <p class="center-align" style="margin-top: 16px; font-size: xx-large;">
+      <span class="hours">{{strHours}}</span>
+      <span class="middle">:</span>
       <span class="minutes">{{strMinutes}}</span>
       <span class="middle">:</span>
       <span class="seconds">{{strSeconds}}</span>

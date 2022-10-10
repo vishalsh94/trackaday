@@ -12,9 +12,6 @@ export class TodoComponent implements OnInit {
   // @Input() todoInput;
   @Input() todoInput ={} as Todo;
 
-  completed: boolean = false;
-  todo={} as Todo;
-
   constructor(public todoService: TodoService, private toasterService: ToastrService) { }
 
   ngOnInit(): void {
@@ -22,8 +19,8 @@ export class TodoComponent implements OnInit {
 
   onChange() {
     console.log("changed");
-    this.completed = !this.completed;
-    this.completed ? this.toasterService.success(`Todo succesfully completed`, 'completed') : '';
+    this.todoInput.isCompleted = !this.todoInput.isCompleted;
+    this.todoInput.isCompleted ? this.toasterService.success(`Todo succesfully completed`, 'completed') : '';
   }
 
   onCliCk(e: any) {
@@ -32,18 +29,22 @@ export class TodoComponent implements OnInit {
   }
 
   toggleClass() {
-    if (this.completed) {
-      // return 'list-item-success';
-      return { 'list-group-item-success': this.completed, 'border-primary': this.completed };
-
+    if (this.todoInput.isCompleted) {
+      return { 'list-group-item-success': this.todoInput.isCompleted, 'border-primary': this.todoInput.isCompleted };
     }
     return null
   }
 
-  deleteTodo(item:any) {
-    this.todo = item;
-    this.todoService.deleteTodo(item);
-    this.toasterService.error(`Todo ${item.id} Deleted!`, 'Deleted Successfuly');
+  deleteTodo(item: Todo) {
+    console.log(item)
+
+    if (item.isCompleted){
+      this.todoService.archiveTodo(item);
+      this.toasterService.error(`"${item.title.substring(0, 20)}..." Archived!`, 'Archived Successfuly');
+    } else{
+      this.todoService.deleteTodo(item);
+      this.toasterService.error(`"${item.title.substring(0, 20)}..." Deleted!`, 'Deleted Successfuly');
+    }
   }
   isFavorite() {
     // this.todoInput.isFavorite = !this.todoInput.isFavorite;

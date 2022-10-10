@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AppComponent } from 'src/app/app.component';
+import { PromptComponent } from '../prompt/prompt.component';
 
 const timerMessages = {
   start: 'Let the countdown begin!!',
@@ -22,13 +25,20 @@ const TOTAL_SECONDS = 0;
 export class StartStopSessionComponent implements OnInit {
 
   message: string = '';
+  strHours: string = '';
   strMinutes: string = '';
   strSeconds: string = '';
   totalSeconds: number = TOTAL_SECONDS;
   timerId: any = null;
   status = Status.STOP;
+  promptComponent: PromptComponent | undefined;
+  currentTimeMinutes: number | any;
+  currentTimeSeconds: number | any;
+  app: AppComponent;
 
-  constructor() { }
+  constructor(appComponent: AppComponent, private dialogRef: MatDialog){ 
+    this.app = appComponent;
+  }  
 
   ngOnInit() {
     this.message = timerMessages.start;
@@ -47,17 +57,21 @@ export class StartStopSessionComponent implements OnInit {
 
   displayTime() {
     const seconds = this.totalSeconds % 60;
-    const minutes = Math.floor((this.totalSeconds - seconds) / 60);
-    //const hours = Math.floor((this.totalSeconds - seconds) / 60);
+    const minutes = Math.floor((this.totalSeconds / 60) % 60);
+    const hours = Math.floor(this.totalSeconds / 3600);
 
+    this.strHours = (hours < 10) ? `0${hours}` : `${hours}`;
     this.strMinutes = (minutes < 10) ? `0${minutes}` : `${minutes}`;
-    this.strSeconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;;
+    this.strSeconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+
+    this.pollCheckpointTimer();
   }
 
   startTimer() {
     this.setStatus(Status.RUNNING);
     this.countdown();
   }
+
 
   pauseTimer() {
     clearInterval(this.timerId);
@@ -67,7 +81,7 @@ export class StartStopSessionComponent implements OnInit {
   stopTimer() {
     clearInterval(this.timerId);
     this.setStatus(Status.STOP);
-    this.displayTime()
+    this.displayTime();
   }
 
   setStatus(newStatus: Status) {
@@ -88,4 +102,22 @@ export class StartStopSessionComponent implements OnInit {
     }
   }
 
+  openDialog()
+  { 
+    this.dialogRef.closeAll()
+    this.dialogRef.open(PromptComponent);
+  }
+
+  pollCheckpointTimer() {
+    if(this.status != Status.STOP){
+      if(this.totalSeconds > 15*60){
+        var currTime = new Date();
+        this.currentTimeSeconds = currTime.getSeconds();
+        this.currentTimeMinutes = currTime.getMinutes();
+        if(this.currentTimeMinutes == 0 && this.currentTimeSeconds == 0){
+          this.openDialog();
+        }
+      }      
+    }
+  }
 }
