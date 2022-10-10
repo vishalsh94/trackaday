@@ -33,6 +33,8 @@ export class AnalysisComponent implements OnInit {
       electron.ipcRenderer.send('read-data', key)
 
       electron.ipcRenderer.once('read-data-reply', (event: any, result: any) => {
+        console.log("Data read by analysis: "+result);
+        
         // resolve(result);
         // this.readCallback(key, result);
         // console.log(result);
@@ -40,7 +42,7 @@ export class AnalysisComponent implements OnInit {
 
         this.result = result;
 
-        this.createTimeTrackigStatsChart();
+        this.createTimeTrackigStatsChart(); // branch1
         this.createTaskTrackingList();
         this.createHourlyTrackingList();
       })
@@ -48,7 +50,7 @@ export class AnalysisComponent implements OnInit {
   }
 
   createTimeTrackigStatsChart() {
-    let stats = getTimeTrackingStats(this.result);
+    let stats = getTimeTrackingStats(this.result); //branch 1.1
     const timeTrackingStats = stats[0];
 
     const labelsList = timeTrackingStats.map((val: any[]) => val[0]);
@@ -89,18 +91,15 @@ export class AnalysisComponent implements OnInit {
 
   }
 
-  callAbc() {
-  }
-
   createTaskTrackingList() {
     const taskTrackingStatsList = getTaskTrackingStats(this.result);
 
     // Implementation for collapsible task list
-    let taskTrackingElement = "";
+    let taskTrackingElement = "<ul>";
     Object.keys(taskTrackingStatsList).map(day => {
-      let taskUL = "<ul>";
+      let taskUL = "";
       taskTrackingStatsList[day].forEach((val: any[]) => {
-        taskUL += "<li>Task: " + val[0] + " Time: " + Math.round(val[1] / (36 * (10 ** 5)) * 100) / 100 + " hrs</li>"
+        taskUL += "<li class=\"collection-item\">Todo: " + val[0] + " Time: " + Math.round(val[1] / (36 * (10 ** 5)) * 100) / 100 + " hrs</li>"
       });
       taskUL += "</li>";
       const k = "\"collapsible-body-" + day + "\"";

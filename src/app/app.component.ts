@@ -27,12 +27,12 @@ export class AppComponent {
 
   saveSessionData(sessionData: Session[]) {
     this.appData.session = sessionData;
-    electron.ipcRenderer.send("save-data-session", JSON.stringify(sessionData));
+    electron.ipcRenderer.send("save-data-session", sessionData);
   }
 
   saveTodoData(todoData: Todo[]) {
     this.appData.tasks = todoData;
-    electron.ipcRenderer.send("save-data-todo", JSON.stringify(todoData));
+    electron.ipcRenderer.send("save-data-todo", todoData);
   }
 
   showCpNotification(timeStr:string, quoteStr:string) {
@@ -55,12 +55,11 @@ export class AppComponent {
   readCallback(key: DataKey, data: any){
     console.log("key:" + key + "\ndata:" + JSON.stringify(data));
     if(key == DataKey.SESSION_KEY){
-      this.appData.session = data == "" ? data : JSON.parse(data);
+      this.appData.session = data;
     } else if (key == DataKey.TODO_KEY){
-      this.appData.tasks = data == "" ? data : JSON.parse(data);
+      this.appData.tasks = data;
     } else if (key == DataKey.ALL_KEY){
-      this.appData.tasks = data.tasks == "" ? data.tasks : JSON.parse(data.tasks);
-      this.appData.session = data.session == "" ? data.session : JSON.parse(data.session);
+      this.appData = data;
     }
 
     this.isReading = false;

@@ -17,10 +17,11 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onChange() {
-    console.log("changed");
-    this.todoInput.isCompleted = !this.todoInput.isCompleted;
-    this.todoInput.isCompleted ? this.toasterService.success(`Todo succesfully completed`, 'completed') : '';
+  onChange(todo: Todo) {
+    console.log("changed: "+JSON.stringify(todo));
+    todo.isCompleted = !todo.isCompleted;
+    this.todoService.completed(todo);
+    todo.isCompleted ? this.toasterService.success(`Todo succesfully completed`, 'completed') : '';
   }
 
   onCliCk(e: any) {
@@ -30,20 +31,20 @@ export class TodoComponent implements OnInit {
 
   toggleClass() {
     if (this.todoInput.isCompleted) {
-      return { 'list-group-item-success': this.todoInput.isCompleted, 'border-primary': this.todoInput.isCompleted };
+      return { 'list-group-todo-success': this.todoInput.isCompleted, 'border-primary': this.todoInput.isCompleted };
     }
     return null
   }
 
-  deleteTodo(item: Todo) {
-    console.log(item)
+  deleteTodo(todo: Todo) {
+    console.log(todo)
 
-    if (item.isCompleted){
-      this.todoService.archiveTodo(item);
-      this.toasterService.error(`"${item.title.substring(0, 20)}..." Archived!`, 'Archived Successfuly');
+    if (todo.isCompleted){
+      this.todoService.archiveTodo(todo);
+      this.toasterService.error(`"${todo.title.substring(0, 20)}..." Archived!`, 'Archived Successfuly');
     } else{
-      this.todoService.deleteTodo(item);
-      this.toasterService.error(`"${item.title.substring(0, 20)}..." Deleted!`, 'Deleted Successfuly');
+      this.todoService.deleteTodo(todo);
+      this.toasterService.error(`"${todo.title.substring(0, 20)}..." Deleted!`, 'Deleted Successfuly');
     }
   }
   isFavorite() {
@@ -54,7 +55,7 @@ export class TodoComponent implements OnInit {
 
     //   this.todoService.fav.unshift(this.todoInput);
 
-    //   localStorage.setItem("favorite", JSON.stringify(this.todoService.fav));
+    //   localStorage.settodo("favorite", JSON.stringify(this.todoService.fav));
 
     // }
     // else {
@@ -62,7 +63,7 @@ export class TodoComponent implements OnInit {
     //   let index = this.todoService.todoList.indexOf(this.todo);
     //   this.todoService.fav.splice(index, 1);
 
-    //   localStorage.setItem("favorite", JSON.stringify(this.todoService.fav));
+    //   localStorage.settodo("favorite", JSON.stringify(this.todoService.fav));
 
     // }
   }

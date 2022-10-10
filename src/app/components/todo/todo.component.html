@@ -2,10 +2,10 @@
     <div class="row" *ngIf="!todoInput.isArchived">
         <div class="col s10">
             <div class="form-check d-inline">
-                <label>
-                <input type="checkbox" class = "form-check-input" id="complete" (change)="onChange()">
-                <span class="form-check-label lead">{{todoInput.title}}</span>
-            </label>
+                <label [class.strike]="todoInput.isCompleted">
+                    <input type="checkbox" class = "form-check-input" id="complete" (change)="onChange(todoInput)" [disabled]="todoInput.isCompleted">
+                    <span class="form-check-label lead" [style.textDecoration]="todoInput.isCompleted ? 'line-through': ''">{{todoInput.title}}</span>
+                </label>
             </div>
             <span style="padding-left: 35px;">{{todoInput.date | date}}</span>
         </div>

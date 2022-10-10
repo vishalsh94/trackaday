@@ -69,6 +69,8 @@
 //   ]
 // };
 
+import { AppData } from "../models/appData";
+
 function initialise_average_hourly_stats(averageHourlyStats: any) {
   for (let hour = 0; hour < 24; hour++) {
     averageHourlyStats[hour] = 0;
@@ -156,13 +158,15 @@ function getDateString(date: any) {
   return date.getUTCDate().toString() + "-" + (date.getUTCMonth() + 1).toString() + "-" + date.getUTCFullYear().toString();
 }
 
-export function getTimeTrackingStats(data: any) {
+export function getTimeTrackingStats(data: AppData) {
   var timeTrackingStats: any = new Object(); // Array of Days-Day Dictionary - key: Day and value is array of sessions
   var averageHourlyStats: any = new Object(); // Array of Hours-Hour Dictionary - key: Hour and value is average number of hours over the days
   var daysSoFar: any = [0];
   initialise_average_hourly_stats(averageHourlyStats);
   for (let index in data.session) {
     var session = data.session[index];
+    console.log(session);
+    
     var startDate = new Date(parseInt(session.startTime));
     var endDate = new Date(parseInt(session.endTime));
     var breakTime = session.breakTime;
