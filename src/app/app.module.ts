@@ -50,7 +50,7 @@ const routes: Route[] = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

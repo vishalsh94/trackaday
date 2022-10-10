@@ -1,56 +1,73 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ApplicationRef } from '@angular/core';
 import { Todo } from '../models/todo';
 import { ToastrService } from 'ngx-toastr';
+import { AppComponent } from '../app.component';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
   fav = [];
-  todoList: Todo[] = [
-    {
-      id: 1,
-      title: 'Todo One',
-      isCompleted: false,
-      isFavorite: false,
-      date: new Date('4-15-2020')
-    },
-    {
-      id: 2,
-      title: 'Todo Two',
-      isCompleted: false,
-      isFavorite: false,
-      date: new Date('5-15-2020')
-    },
-    {
-      id: 3,
-      title: 'Todo Three',
-      isCompleted: false,
-      isFavorite: false,
-      date: new Date('6-15-2020')
+  todoList: Todo[] = [];
+  appComponent: AppComponent;
+  appRef: ApplicationRef;
+
+  private todoReplay: ReplaySubject<Todo[]> = new ReplaySubject<Todo[]>(0);
+
+  constructor(private deletePopup: ToastrService, appComponent: AppComponent, appRef: ApplicationRef) {
+    this.appComponent = appComponent;
+    this.appRef = appRef;
+    this.readDataStore();
+   }
+
+   async readDataStore(){
+    while(this.appComponent.isReading){
+      await this.delay(10);
     }
-  ];
+    this.todoList = this.appComponent.appData.tasks;
+    this.todoReplay.next(this.todoList);
+    console.log("Updated appData: "+this.todoList[0]);
+    this.appRef.tick();
+   }
 
-  constructor(private deletePopup: ToastrService) { }
+   waitForData():Observable<Todo[]>{
+    return this.todoReplay;
+   }
 
-  deleteTodo(item:any) {
+   delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+   }
+
+   deleteTodo(item:any) {
     let index = this.todoList.indexOf(item);
     this.todoList.splice(index, 1);
+    this.save();
+  }
 
-    // this.deletePopup.success(`Todo ${item.id} Deleted!`);
+  archiveTodo(item:any) {
+    let index = this.todoList.indexOf(item);
+    this.todoList[index].isArchived = true;
+    this.save();
   }
 
   addTodo(title:any) {
-    let id = this.todoList.length + 2;
+    let taskId = this.todoList.length + 2;
 
     const item: Todo = {
-      id: id,
+      taskId: taskId,
       isCompleted: false,
       isFavorite: false,
       date: new Date(),
-      title: title
+      title: title,
+      isArchived: false
     }
     this.todoList.unshift(item);
+    this.save();
+  }
+
+  save(){
+    this.appComponent.saveTodoData(this.todoList);
   }
 
   updateFav(){
