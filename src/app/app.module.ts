@@ -45,8 +45,8 @@ const routes: Route[] = [
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatDialog,
-    MatDialogRef,
+    // MatDialog,
+    // MatDialogRef,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
