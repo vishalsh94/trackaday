@@ -51,6 +51,12 @@ export class TodoService {
     this.save();
   }
 
+  completed(item:Todo) {
+    let index = this.todoList.indexOf(item);
+    this.todoList[index].isCompleted = item.isCompleted;
+    this.save();
+  }
+
   addTodo(title:any) {
     let taskId = this.todoList.length + 2;
 
