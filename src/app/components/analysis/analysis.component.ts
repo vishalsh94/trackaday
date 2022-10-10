@@ -91,18 +91,15 @@ export class AnalysisComponent implements OnInit {
 
   }
 
-  callAbc() {
-  }
-
   createTaskTrackingList() {
     const taskTrackingStatsList = getTaskTrackingStats(this.result);
 
     // Implementation for collapsible task list
-    let taskTrackingElement = "";
+    let taskTrackingElement = "<ul>";
     Object.keys(taskTrackingStatsList).map(day => {
-      let taskUL = "<ul>";
+      let taskUL = "";
       taskTrackingStatsList[day].forEach((val: any[]) => {
-        taskUL += "<li>Task: " + val[0] + " Time: " + Math.round(val[1] / (36 * (10 ** 5)) * 100) / 100 + " hrs</li>"
+        taskUL += "<li class=\"collection-item\">Todo: " + val[0] + " Time: " + Math.round(val[1] / (36 * (10 ** 5)) * 100) / 100 + " hrs</li>"
       });
       taskUL += "</li>";
       const k = "\"collapsible-body-" + day + "\"";
