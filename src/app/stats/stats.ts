@@ -1,73 +1,73 @@
-var data = {
-  "tasks": [
-    {
-      "taskId": "1",
-      "timeStamps": [
-        {
-          "startTime": "1664115672700",
-          "endTime": "1664126472700",
-          "sessionId": "1"
-        },
-        {
-          "startTime": "1664130072700",
-          "endTime": "1664137272007",
-          "sessionId": "1"
-        }
-      ]
-    },
-    {
-      "taskId": "2",
-      "timeStamps": [
-        {
-          "startTime": "1664144472007",
-          "endTime": "1664155272700",
-          "sessionId": "1"
-        }
-      ]
-    },
-    {
-      "taskId": "3",
-      "timeStamps": [
-        {
-          "startTime": "1664202600000",
-          "endTime": "1664213400000",
-          "sessionId": "2"
-        },
-        {
-          "startTime": "1664217000000",
-          "endTime": "1664224200000",
-          "sessionId": "2"
-        },
-      ]
-    }
-  ],
-  "session": [
-    {
-      "sessionId": "1",
-      "taskIds": ["1", "2"],
-      "startTime": "1664115672700",
-      "endTime": "1664155272700",
-      "breakTime": [
-        {
-          "startTime": "1664126472700",
-          "endTime": "1664130072700"
-        }
-      ]
-    },
-    {
-      "sessionId": "2",
-      "taskIds": ["3"],
-      "startTime": "1664202600000",
-      "endTime": "1664224200000",
-      "breakTime": [
-        {
-          "startTime": "1664213400000",
-          "endTime": "1664217000000"
-        }
-      ]
-    }
-  ]
-};
+// var data = {
+//   "tasks": [
+//     {
+//       "taskId": "1",
+//       "timeStamps": [
+//         {
+//           "startTime": "1664115672700",
+//           "endTime": "1664126472700",
+//           "sessionId": "1"
+//         },
+//         {
+//           "startTime": "1664130072700",
+//           "endTime": "1664137272007",
+//           "sessionId": "1"
+//         }
+//       ]
+//     },
+//     {
+//       "taskId": "2",
+//       "timeStamps": [
+//         {
+//           "startTime": "1664144472007",
+//           "endTime": "1664155272700",
+//           "sessionId": "1"
+//         }
+//       ]
+//     },
+//     {
+//       "taskId": "3",
+//       "timeStamps": [
+//         {
+//           "startTime": "1664202600000",
+//           "endTime": "1664213400000",
+//           "sessionId": "2"
+//         },
+//         {
+//           "startTime": "1664217000000",
+//           "endTime": "1664224200000",
+//           "sessionId": "2"
+//         },
+//       ]
+//     }
+//   ],
+//   "session": [
+//     {
+//       "sessionId": "1",
+//       "taskIds": ["1", "2"],
+//       "startTime": "1664115672700",
+//       "endTime": "1664155272700",
+//       "breakTime": [
+//         {
+//           "startTime": "1664126472700",
+//           "endTime": "1664130072700"
+//         }
+//       ]
+//     },
+//     {
+//       "sessionId": "2",
+//       "taskIds": ["3"],
+//       "startTime": "1664202600000",
+//       "endTime": "1664224200000",
+//       "breakTime": [
+//         {
+//           "startTime": "1664213400000",
+//           "endTime": "1664217000000"
+//         }
+//       ]
+//     }
+//   ]
+// };
 
 function initialise_average_hourly_stats(averageHourlyStats: any) {
   for (let hour = 0; hour < 24; hour++) {
@@ -156,7 +156,7 @@ function getDateString(date: any) {
   return date.getUTCDate().toString() + "-" + (date.getUTCMonth() + 1).toString() + "-" + date.getUTCFullYear().toString();
 }
 
-export function getTimeTrackingStats() {
+export function getTimeTrackingStats(data: any) {
   var timeTrackingStats: any = new Object(); // Array of Days-Day Dictionary - key: Day and value is array of sessions
   var averageHourlyStats: any = new Object(); // Array of Hours-Hour Dictionary - key: Hour and value is average number of hours over the days
   var daysSoFar: any = [0];
@@ -206,7 +206,7 @@ export function getTimeTrackingStats() {
   }), averageHourlyStats];
 }
 
-export function getTaskTrackingStats() {
+export function getTaskTrackingStats(data: any) {
   var taskTrackingStats: any = new Object(); // Array of Days-Day Dictionary - key: Day and value is array of tasks
   for (let index in data.tasks) {
     var task = data.tasks[index];
