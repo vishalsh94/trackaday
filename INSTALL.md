@@ -20,3 +20,19 @@ npm start
 ```
 The desktop application should open in a new window.
 
+## Generating executables for different OS
+
+We need to install a [packaging software]("https://github.com/electron/electron-packager") first.
+```sh
+npm install electron-packager
+```
+
+For Windows executable:
+```sh
+npx electron-packager . Trackaday --platform=win32 --arch=x64
+```
+
+For MacOS executable:
+```sh
+npx electron-packager . Trackaday --platform=darwin --arch=arm64
+```
