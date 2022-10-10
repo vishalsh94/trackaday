@@ -1,6 +1,8 @@
 import { OnInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Chart, Point, registerables } from "chart.js";
+import { DataKey } from 'src/app/models/dataKey';
 import { getTaskTrackingStats, getTimeTrackingStats } from 'src/app/stats/stats';
+const electron = (<any>window).require('electron');
 
 Chart.register(...registerables);
 
@@ -13,19 +15,40 @@ Chart.register(...registerables);
 
 export class AnalysisComponent implements OnInit {
   private data: Point[];
+  private result: any;
+
 
   constructor() {
     this.data = [{ x: 1, y: 5 }, { x: 2, y: 10 }, { x: 3, y: 6 }, { x: 4, y: 2 }, { x: 4.1, y: 6 }];
   }
 
   ngOnInit(): void {
-    this.createTimeTrackigStatsChart();
-    this.createTaskTrackingList();
-    this.createHourlyTrackingList();
+    this.readAppData(DataKey.ALL_KEY);
+  }
+
+  readAppData(key: DataKey) {
+    // this.isReading = true;
+    console.log("trying to read data")
+    return new Promise(resolve => {
+      electron.ipcRenderer.send('read-data', key)
+
+      electron.ipcRenderer.once('read-data-reply', (event: any, result: any) => {
+        // resolve(result);
+        // this.readCallback(key, result);
+        // console.log(result);
+        // eval("document.getElementById('abcd').innerHTML = JSON.stringify(" + JSON.stringify(result) + ");");
+
+        this.result = result;
+
+        this.createTimeTrackigStatsChart();
+        this.createTaskTrackingList();
+        this.createHourlyTrackingList();
+      })
+    })
   }
 
   createTimeTrackigStatsChart() {
-    let stats = getTimeTrackingStats();
+    let stats = getTimeTrackingStats(this.result);
     const timeTrackingStats = stats[0];
 
     const labelsList = timeTrackingStats.map((val: any[]) => val[0]);
@@ -70,7 +93,7 @@ export class AnalysisComponent implements OnInit {
   }
 
   createTaskTrackingList() {
-    const taskTrackingStatsList = getTaskTrackingStats();
+    const taskTrackingStatsList = getTaskTrackingStats(this.result);
 
     // Implementation for collapsible task list
     let taskTrackingElement = "";
@@ -92,7 +115,7 @@ export class AnalysisComponent implements OnInit {
   }
 
   createHourlyTrackingList() {
-    let stats = getTimeTrackingStats();
+    let stats = getTimeTrackingStats(this.result);
     const timeTrackingStats = stats[1];
 
     const labelsList = Array(24).fill(0).map((_, index) => index);
