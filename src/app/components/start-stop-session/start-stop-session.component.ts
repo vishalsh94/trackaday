@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AppComponent } from 'src/app/app.component';
+import { Session } from 'src/app/models/session';
+import { Break } from 'src/app/models/break';
+import { TimerService } from 'src/app/services/timer.service';
 import { PromptComponent } from '../prompt/prompt.component';
 
 const timerMessages = {
@@ -34,15 +37,18 @@ export class StartStopSessionComponent implements OnInit {
   promptComponent: PromptComponent | undefined;
   currentTimeMinutes: number | any;
   currentTimeSeconds: number | any;
-  app: AppComponent;
 
-  constructor(appComponent: AppComponent, private dialogRef: MatDialog){ 
-    this.app = appComponent;
-  }  
+  sessionList: Session[] = [];
+  session:Session | any;
+
+  constructor(public timerService:TimerService, public appComponent: AppComponent, private dialogRef: MatDialog){ }  
 
   ngOnInit() {
     this.message = timerMessages.start;
     this.displayTime();
+    this.timerService.waitForData().subscribe((sessionList:Session[])=>{
+      this.sessionList = sessionList;
+    })
   }
 
   countdown() {
@@ -68,20 +74,48 @@ export class StartStopSessionComponent implements OnInit {
   }
 
   startTimer() {
-    this.setStatus(Status.RUNNING);
-    this.countdown();
+    if(this.status == Status.PAUSE){
+      this.resumeTimer();
+    } else {
+      this.setStatus(Status.RUNNING);
+      var timeStr = this.getTimeStr();
+      const session:Session = {
+        sessionId: this.sessionList.length.toString(),
+        startTime: timeStr,
+        endTime: timeStr,
+        breakTime: [],
+        taskIds: []
+      }
+      this.session = session;
+      this.countdown();
+    }
   }
 
+  resumeTimer(){
+    this.setStatus(Status.RUNNING);
+    this.session.breakTime.at(-1).endTime = this.getTimeStr();
+    this.countdown();
+  }
 
   pauseTimer() {
     clearInterval(this.timerId);
     this.setStatus(Status.PAUSE);
+    var timeStr = this.getTimeStr();
+    const breakItem:Break = {
+      startTime: timeStr,
+      endTime: timeStr
+    }
+    this.session.breakTime.push(breakItem);
   }
 
   stopTimer() {
     clearInterval(this.timerId);
     this.setStatus(Status.STOP);
     this.displayTime();
+
+    this.session.endTime = this.getTimeStr();
+    this.sessionList.push(this.session);
+    this.appComponent.saveSessionData(this.sessionList);
   }
 
   setStatus(newStatus: Status) {
@@ -106,6 +140,10 @@ export class StartStopSessionComponent implements OnInit {
   { 
     this.dialogRef.closeAll()
     this.dialogRef.open(PromptComponent);
+  }
+
+  getTimeStr(){
+    return (Date.now()).toString();
   }
 
   pollCheckpointTimer() {

@@ -49,7 +49,7 @@ export class AppComponent {
   }
 
   readCallback(key: DataKey, data: any){
-    console.log("key:" + key + "\ndata:" + data);
+    console.log("key:" + key + "\ndata:" + JSON.stringify(data));
     if(key == DataKey.SESSION_KEY){
       this.appData.session = data == "" ? data : JSON.parse(data);
     } else if (key == DataKey.TODO_KEY){
