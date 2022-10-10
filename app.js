@@ -1,9 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const url = require('url');
 const path = require('path');
-// const fs = require('fs');
 const Store = require('./store');
-// const APPDATA_FILENAME = ".taskaday-appdata.json"  // todo: save in OS default APP folder
 const SESSION_KEY = 'session';
 const TODO_KEY = 'tasks';
 const ALL_KEY = 'all';
