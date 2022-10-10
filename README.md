@@ -1,7 +1,44 @@
-# Trackaday
+![Screenshot](https://github.com/vishalsh94/trackaday/blob/main/images/screenshot.jpg?raw=true)
 
-This is a desktop application to track and improve your productivity.
 
-## Run Instructions
+<h2 align="center">Track-a-Day</h2>
 
-The UI has been designed using Angular JS and the application is running inside a Chromium container using Electron.js. Navigate to the root directory of the project and run 'npm start' to start the application on your local.
+<!--<a href="https://github.com/arnab-95/se-group38-hw/actions"><img alt="Build Status" src="https://github.com/arnab-95/se-group38-hw/workflows/build/badge.svg"></a> -->
+
+<!--[![Github](https://img.shields.io/badge/language-python-red.svg)](https://docs.python.org/3/)-->
+
+<a href="https://github.com/vishalsh94/se-group38-hw/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/vishalsh94/trackaday"></a> [![DOI](https://zenodo.org/badge/528539896.svg)](https://zenodo.org/badge/latestdoi/528539896) [![GitHub top language](https://img.shields.io/github/languages/top/vishalsh94/trackaday)](https://docs.python.org/3/) [![GitHub last commit](https://img.shields.io/github/last-commit/vishalsh94/trackaday)](https://github.com/vishalsh94/trackaday/commits/main) [![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/vishalsh94/trackaday.svg?maxAge=2592000)](https://codecov.io/github/vishalsh94/trackaday?branch=master)
+
+
+> “Your accountability partner for focused work.”
+
+
+
+This desktop programme helps you monitor and enhance your productivity.
+
+A desktop programme called Track-a-Day can be utilized to keep track of daily tasks. The tasks that users wish to finish are added.
+The user then adjusts the timer to retain track of their progress. Every hour, a pop-up encourages the user with an encouraging phrase. After the timer has begun, a pause and stop button is presented. The timer can be halted by users for breaks. Users can suspend the timer at the end of the day to get an overview of the current session.
+User can access a report on their session evaluation. Users receive up to 30 sessions to assess.
+
+
+## Installation and Usage
+
+You must have npm installed on your system. 
+
+Run the following commands to install Angular and Electron.js- 
+
+```sh
+npm install -g @angular/cli
+```
+```sh
+npm install --save-dev electron@latest
+```
+
+Clone the repository and cd into the root directory. Then run the following commands - 
+```sh
+npm install
+```
+```sh
+npm start
+```
+The desktop application should open in a new window.

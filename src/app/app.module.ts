@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,10 +39,14 @@ const routes: Route[] = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass :'toast-bottom-right'
+    }),
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    MatDialog,
+    MatDialogRef,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
