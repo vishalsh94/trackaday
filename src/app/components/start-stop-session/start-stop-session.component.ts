@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AppComponent } from 'src/app/app.component';
 import { PromptComponent } from '../prompt/prompt.component';
 
 const timerMessages = {
@@ -31,8 +32,13 @@ export class StartStopSessionComponent implements OnInit {
   timerId: any = null;
   status = Status.STOP;
   promptComponent: PromptComponent | undefined;
+  currentTimeMinutes: number | any;
+  currentTimeSeconds: number | any;
+  app: AppComponent;
 
-  constructor(private dialogRef: MatDialog) { }
+  constructor(appComponent: AppComponent, private dialogRef: MatDialog){ 
+    this.app = appComponent;
+  }  
 
   ngOnInit() {
     this.message = timerMessages.start;
@@ -56,20 +62,16 @@ export class StartStopSessionComponent implements OnInit {
 
     this.strHours = (hours < 10) ? `0${hours}` : `${hours}`;
     this.strMinutes = (minutes < 10) ? `0${minutes}` : `${minutes}`;
-    this.strSeconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;;
+    this.strSeconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+
+    this.pollCheckpointTimer();
   }
 
   startTimer() {
     this.setStatus(Status.RUNNING);
     this.countdown();
-    this.startCheckpointTimerLoop();
   }
 
-  startCheckpointTimerLoop() {
-    this.openDialog();
-    // setInterval(() => {
-    //   this.openDialog();},3600000)
-  }
 
   pauseTimer() {
     clearInterval(this.timerId);
@@ -79,7 +81,7 @@ export class StartStopSessionComponent implements OnInit {
   stopTimer() {
     clearInterval(this.timerId);
     this.setStatus(Status.STOP);
-    this.displayTime()
+    this.displayTime();
   }
 
   setStatus(newStatus: Status) {
@@ -104,5 +106,18 @@ export class StartStopSessionComponent implements OnInit {
   { 
     this.dialogRef.closeAll()
     this.dialogRef.open(PromptComponent);
+  }
+
+  pollCheckpointTimer() {
+    if(this.status != Status.STOP){
+      if(this.totalSeconds > 15*60){
+        var currTime = new Date();
+        this.currentTimeSeconds = currTime.getSeconds();
+        this.currentTimeMinutes = currTime.getMinutes();
+        if(this.currentTimeMinutes == 0 && this.currentTimeSeconds == 0){
+          this.openDialog();
+        }
+      }      
+    }
   }
 }

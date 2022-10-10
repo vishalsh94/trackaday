@@ -21,7 +21,15 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "paths":{
+      // "electron":["node_modules/electron"],
+      "path":["node_modules/path-browserify"],
+      "fs":["node_modules/fs-extra"],
+      "os":["node_modules/os-browserify/browser"],
+      "stream":["node_modules/stream-browserify"],
+      "constants":["node_modules/constants-browserify"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

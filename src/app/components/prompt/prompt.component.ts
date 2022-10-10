@@ -9,10 +9,25 @@ import { MatDialog } from '@angular/material/dialog';
 export class PromptComponent implements OnInit {
 
   qoute: String | any;
+  hour: Number | any;
+  period: String | any;
   constructor(private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
     this.qoute = this.getQoute();
+    var currTime = new Date();
+    this.hour = currTime.getHours();
+    if(this.hour == 0){
+      this.period = "AM";
+      this.hour = 12;
+    }else if(this.hour < 12){
+      this.period = "AM";
+    } else if(this.hour == 12){
+      this.period = "PM";
+    } else{
+      this.period = "PM";
+      this.hour -= 12;
+    }
   }
 
   // openDialog(){
