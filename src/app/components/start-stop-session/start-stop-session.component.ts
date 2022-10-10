@@ -18,6 +18,22 @@ enum Status {
     RUNNING = 'RUNNING'
 };
 
+const qoutes = [
+  "Good Work!!", 
+  "Keep it up!! You are doing great!",
+  "Nothing is impossible!",
+  "Stay Hydrated !!",
+  "Dont Give up. You can achieve it!",
+  "Dont Wish for it, Work for it!",
+  "Dont let yesterday take too much of today.",
+  "It might not be easy but it'll be worth it.",
+  "Believe you can and you are halfway there.",
+  "Stay hopeful.",
+  "Make each day your masterpiece.",
+  "Dont stop. Keep going!",
+  "Focus.",
+  "Be a voice not an echo."
+]
 const TOTAL_SECONDS = 0;
 
 @Component({
@@ -116,6 +132,7 @@ export class StartStopSessionComponent implements OnInit {
     this.session.endTime = this.getTimeStr();
     this.sessionList.push(this.session);
     this.appComponent.saveSessionData(this.sessionList);
+    // this.openNotification();
   }
 
   setStatus(newStatus: Status) {
@@ -136,10 +153,11 @@ export class StartStopSessionComponent implements OnInit {
     }
   }
 
-  openDialog()
+  openNotification()
   { 
-    this.dialogRef.closeAll()
-    this.dialogRef.open(PromptComponent);
+    // this.dialogRef.closeAll()
+    // this.dialogRef.open(PromptComponent);
+    this.appComponent.showCpNotification(this.getCheckpointStr(), this.getQoute());
   }
 
   getTimeStr(){
@@ -153,9 +171,32 @@ export class StartStopSessionComponent implements OnInit {
         this.currentTimeSeconds = currTime.getSeconds();
         this.currentTimeMinutes = currTime.getMinutes();
         if(this.currentTimeMinutes == 0 && this.currentTimeSeconds == 0){
-          this.openDialog();
+          this.openNotification();
         }
       }      
     }
+  }
+
+  getQoute(){
+    var randomIndex = Math.floor(Math.random() * qoutes.length)
+    return qoutes[randomIndex]
+  }
+
+  getCheckpointStr(){
+    var currTime = new Date();
+    var hour = currTime.getHours();
+    var period = "AM";
+    if(hour == 0){
+      period = "AM";
+      hour = 12;
+    }else if(hour < 12){
+      period = "AM";
+    } else if(hour == 12){
+      period = "PM";
+    } else{
+      period = "PM";
+      hour -= 12;
+    }
+    return (hour+" "+period+" Checkpoint");
   }
 }

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, Notification } = require('electron')
 const url = require('url');
 const path = require('path');
 const Store = require('./store');
@@ -86,9 +86,50 @@ function readDataCallback(event, result){
   console.log("readData reply sent");
 }
 
+function createNotification(event, timeStr, quoteStr){
+  console.log("createNotification called");
+
+  const options = {
+    title: timeStr,
+    subtitle: quoteStr,
+    body: 'Mark completed tasks in the ToDo List.',
+    silent: false,
+    // icon: path.join(__dirname, '../assets/image.png'),
+    hasReply: false,  
+    timeoutType: 'never',
+    urgency: 'critical',
+    closeButtonText: 'Okay',
+    // actions: [ {
+    //     type: 'button',
+    //     text: 'Okay'
+    // }]
+  }
+
+  // Instantiating a new Notifications Object
+  // with custom Options
+  const customNotification = new Notification(options);
+     
+  // Instance Events for the new Notification Object
+  customNotification.addListener('click', () => {
+      console.log('Notification is Clicked');
+      mainWindow.show();
+  });
+    
+  customNotification.addListener('show', () => {
+      console.log('Notification is shown');
+  });
+    
+  customNotification.addListener('close', () => {
+      console.log('Notification is Automatically Closed')
+  });
+
+  customNotification.show();
+}
+
 ipcMain.on("save-data-session", saveDataSession)
 ipcMain.on("save-data-todo", saveDataTodo)
 ipcMain.on("read-data", readData)
+ipcMain.on("cp-notification", createNotification)
 
 app.on('activate', function () {
   if (mainWindow === null) createWindow()

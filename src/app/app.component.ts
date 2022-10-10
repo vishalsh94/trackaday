@@ -35,6 +35,10 @@ export class AppComponent {
     electron.ipcRenderer.send("save-data-todo", JSON.stringify(todoData));
   }
 
+  showCpNotification(timeStr:string, quoteStr:string) {
+    electron.ipcRenderer.send("cp-notification", timeStr, quoteStr);
+  }
+
   readAppData(key: DataKey) {
     this.isReading = true;
     console.log("trying to read data")
