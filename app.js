@@ -72,7 +72,6 @@ function saveDataTodo(event, data) {
 }
 
 function readData(event, key) {
-  console.log("readData called");
   if(key == ALL_KEY){
     data = dataStore.data;
   } else {
@@ -83,12 +82,9 @@ function readData(event, key) {
 
 function readDataCallback(event, result){
   event.sender.send('read-data-reply', result);
-  console.log("readData reply sent");
 }
 
 function createNotification(event, timeStr, quoteStr){
-  console.log("createNotification called");
-
   const options = {
     title: timeStr,
     subtitle: quoteStr,
@@ -111,8 +107,8 @@ function createNotification(event, timeStr, quoteStr){
      
   // Instance Events for the new Notification Object
   customNotification.addListener('click', () => {
-      console.log('Notification is Clicked');
       mainWindow.show();
+      customNotification?.close();
   });
     
   customNotification.addListener('show', () => {

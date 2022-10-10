@@ -4,7 +4,7 @@ import { AppComponent } from 'src/app/app.component';
 import { Session } from 'src/app/models/session';
 import { Break } from 'src/app/models/break';
 import { TimerService } from 'src/app/services/timer.service';
-import { PromptComponent } from '../prompt/prompt.component';
+// import { PromptComponent } from '../prompt/prompt.component';
 
 const timerMessages = {
   start: 'Let the countdown begin!!',
@@ -50,7 +50,7 @@ export class StartStopSessionComponent implements OnInit {
   totalSeconds: number = TOTAL_SECONDS;
   timerId: any = null;
   status = Status.STOP;
-  promptComponent: PromptComponent | undefined;
+  // promptComponent: PromptComponent | undefined;
   currentTimeMinutes: number | any;
   currentTimeSeconds: number | any;
 
