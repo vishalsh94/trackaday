@@ -21,6 +21,9 @@ The user then adjusts the timer to retain track of their progress. Every hour, a
 User can access a report on their session evaluation. Users receive up to 30 sessions to assess.
 
 
+## Demo Video
+https://drive.google.com/file/d/1YQajSqeIZ3xLBDmzofZ_2pLaI2lc6nsD/view 
+
 ## Installation and Usage
 
 You must have npm installed on your system. 
@@ -42,3 +45,8 @@ npm install
 npm start
 ```
 The desktop application should open in a new window.
+
+## Documentation
+https://arnab-95.github.io/ 
+
+
