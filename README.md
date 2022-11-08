@@ -12,7 +12,8 @@
 ![GitHub top language](https://img.shields.io/badge/language-TypeScript-orange)
 ![GitHub top language](https://img.shields.io/badge/contributors-5-blue)
 ![GitHub top language](https://img.shields.io/badge/build-passing-red)
-![GitHub top language](https://img.shields.io/badge/closed_issues-12-yellow)
+![GitHub top language](https://img.shields.io/badge/closed_issues-1-yellow)
+![GitHub top language](https://img.shields.io/badge/pull_requests-29_closed-blue)
 
 
 
