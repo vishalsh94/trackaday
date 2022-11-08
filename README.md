@@ -46,6 +46,24 @@ npm start
 ```
 The desktop application should open in a new window.
 
+The home page has a timer and a ToDo List. You can add your items in the ToDo list and press START to begin tracking your progress. 
+
+Click PAUSE if you want to take a break and STOP if you want to close out the work session. 
+
+While the timer is RUNNING or is PAUSED (not STOPPED) you will receive a desktop notification every hour to make sure you are engaged and not distracted during your session. (This will run at the beginning of every hour e.g. at 1PM, 2PM, 3PM etc according to the local clock of your computer) 
+
+![Screenshot](https://github.com/vishalsh94/trackaday/blob/main/images/hourly_notification.png?raw=true)
+
+
+When you click STOP and close out the session, the amount of time you worked, took a break and the number of activities you completed will be logged in the database. 
+
+When you click on the Analytics tab, you can see information about your weekly performance. 
+
+![Screenshot](https://github.com/vishalsh94/trackaday/blob/main/images/graphs.png?raw=true)
+
+It shows you the number of hours worked per day as well as when you usually work during the day. 
+
+
 ## Documentation
 https://arnab-95.github.io/ 
 
