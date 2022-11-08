@@ -50,7 +50,7 @@ The home page has a timer and a ToDo List. You can add your items in the ToDo li
 
 Click PAUSE if you want to take a break and STOP if you want to close out the work session. 
 
-While the timer is RUNNING or is PAUSED (not STOPPED) you will receive a desktop notification every hour to make sure you are engaged and not distracted during your session. (This will run at the beginning of every hour e.g. at 1PM, 2PM, 3PM etc according to the local clock of your computer) 
+While the timer is RUNNING or is PAUSED (not STOPPED) you will receive a desktop notification (works on both Windows and Mac) every hour to make sure you are engaged and not distracted during your session. (This will run at the beginning of every hour e.g. at 1PM, 2PM, 3PM etc according to the local clock of your computer) 
 
 ![Screenshot](https://github.com/vishalsh94/trackaday/blob/main/images/hourly_notification.png?raw=true)
 
