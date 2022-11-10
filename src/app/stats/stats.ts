@@ -71,12 +71,14 @@
 
 import { AppData } from "../models/appData";
 
+// Function to initialise the averageHourlyStats array. That is initialise all the average hour values to zero.
 function initialise_average_hourly_stats(averageHourlyStats: any) {
   for (let hour = 0; hour < 24; hour++) {
     averageHourlyStats[hour] = 0;
   }
 }
 
+// Function to add the hours to the total averageHourlyStats during the over all session time and remove the hours during the break time.
 function add_or_remove_hours(hour: any, hour_fraction: any, daysSoFar: any, averageHourlyStats: any, toAdd: any) {
   if (toAdd) {
     averageHourlyStats[hour] = ((averageHourlyStats[hour] * (daysSoFar - 1)) + hour_fraction) / daysSoFar;
@@ -86,6 +88,7 @@ function add_or_remove_hours(hour: any, hour_fraction: any, daysSoFar: any, aver
   }
 }
 
+// Funtion to  add the hours to the total averageHourlyStats during a particular start and end dates.
 function add_hour_data(startDate: any, endDate: any, daysSoFar: any, averageHourlyStats: any, toAdd: any) {
   let startHour = startDate.getUTCHours();
   let endHour = endDate.getUTCHours();
@@ -106,6 +109,7 @@ function add_hour_data(startDate: any, endDate: any, daysSoFar: any, averageHour
   }
 }
 
+// Function to remove the hours that were added as part of the session time but were not active as they were part of the break time.
 function removeBreakTime(breakTime: any, totalTimeForDay: any, startDate: any, endDate: any, daysSoFar: any, averageHourlyStats: any) {
   if (breakTime.length != 0) {
     for (let breakIdx in breakTime) {
@@ -126,6 +130,7 @@ function removeBreakTime(breakTime: any, totalTimeForDay: any, startDate: any, e
   return totalTimeForDay;
 }
 
+// Function to add the session details to the time Tracking Stats array
 function addSessionToTimeTrackingStats(dateString: any, sessionDetails: any, timeTrackingStats: any) {
   if (timeTrackingStats.hasOwnProperty(dateString)) {
     timeTrackingStats[dateString].push(sessionDetails); // Session Id, Total Time of the session (in ms)
@@ -135,6 +140,7 @@ function addSessionToTimeTrackingStats(dateString: any, sessionDetails: any, tim
   }
 }
 
+// Function to add the task details to the task Tracking Stats array
 function addTaskToTaskTrackingStats(dateString: any, taskDetails: any, taskTrackingStats: any) {
   if (taskTrackingStats.hasOwnProperty(dateString)) {
     taskTrackingStats[dateString].push(taskDetails); // Task Id, Total Time of the task (in ms)
@@ -144,6 +150,7 @@ function addTaskToTaskTrackingStats(dateString: any, taskDetails: any, taskTrack
   }
 }
 
+// Function to split the session in between two days if the session is extended to the next day and use the days as seperate info
 function spiltBtwTwoDays(startDate: any, endDate: any) {
   var endOfDayOne = new Date(startDate);
   endOfDayOne.setUTCHours(23, 59, 59, 59);
@@ -154,10 +161,12 @@ function spiltBtwTwoDays(startDate: any, endDate: any) {
   return [totalTimeForDayOne, totalTimeForDayTwo];
 }
 
+// Function to the Date String from the UTC Date format to DD-MM-YYYY format
 function getDateString(date: any) {
   return date.getUTCDate().toString() + "-" + (date.getUTCMonth() + 1).toString() + "-" + date.getUTCFullYear().toString();
 }
 
+// Function to get the over all time tracking stats based on all the sessions so far
 export function getTimeTrackingStats(data: AppData) {
   var timeTrackingStats: any = new Object(); // Array of Days-Day Dictionary - key: Day and value is array of sessions
   var averageHourlyStats: any = new Object(); // Array of Hours-Hour Dictionary - key: Hour and value is average number of hours over the days
@@ -210,6 +219,7 @@ export function getTimeTrackingStats(data: AppData) {
   }), averageHourlyStats];
 }
 
+// Function to get the over all task tracking stats based on all the tasks so far
 export function getTaskTrackingStats(data: any) {
   var taskTrackingStats: any = new Object(); // Array of Days-Day Dictionary - key: Day and value is array of tasks
   for (let index in data.tasks) {
