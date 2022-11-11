@@ -3,7 +3,7 @@
 
 <h2 align="center">Track-a-Day</h2>
 
-<!--<a href="https://github.com/arnab-95/se-group38-hw/actions"><img alt="Build Status" src="https://github.com/arnab-95/se-group38-hw/workflows/build/badge.svg"></a> -->
+<a href="https://github.com/vishalsh94/trackaday/actions"><img alt="Build Status" src="https://github.com/vishalsh94/trackaday/workflows/build/badge.svg"></a>
 
 <!--[![Github](https://img.shields.io/badge/language-python-red.svg)](https://docs.python.org/3/)-->
 
