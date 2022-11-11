@@ -3,16 +3,7 @@
 
 <h2 align="center">Track-a-Day</h2>
 
-<!--<a href="https://github.com/arnab-95/se-group38-hw/actions"><img alt="Build Status" src="https://github.com/arnab-95/se-group38-hw/workflows/build/badge.svg"></a> -->
-
-<!--[![Github](https://img.shields.io/badge/language-python-red.svg)](https://docs.python.org/3/)-->
-
-<a href="https://github.com/vishalsh94/trackaday/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/vishalsh94/trackaday"></a> [![DOI](https://zenodo.org/badge/528539896.svg)](https://zenodo.org/badge/latestdoi/528539896) [![GitHub top language](https://img.shields.io/github/languages/top/vishalsh94/trackaday)](https://docs.python.org/3/) [![GitHub last commit](https://img.shields.io/github/last-commit/vishalsh94/trackaday)](https://github.com/vishalsh94/trackaday/commits/main) [![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/vishalsh94/trackaday.svg?maxAge=2592000)](https://codecov.io/github/vishalsh94/trackaday?branch=master)
-![GitHub top language](https://img.shields.io/badge/language-TypeScript-orange)
-![GitHub top language](https://img.shields.io/badge/contributors-5-blue)
-![GitHub top language](https://img.shields.io/badge/build-passing-red)
-![GitHub top language](https://img.shields.io/badge/closed_issues-1-yellow)
-![GitHub top language](https://img.shields.io/badge/pull_requests-29_closed-blue)
+<a href="https://github.com/vishalsh94/trackaday/actions"><img alt="Build Status" src="https://github.com/vishalsh94/trackaday/actions/workflows/node.js.yml/badge.svg"></a> <a href="https://github.com/vishalsh94/trackaday/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/vishalsh94/trackaday"></a> [![DOI](https://zenodo.org/badge/528539896.svg)](https://zenodo.org/badge/latestdoi/528539896) [![GitHub top language](https://img.shields.io/github/languages/top/vishalsh94/trackaday)](https://docs.python.org/3/) [![GitHub last commit](https://img.shields.io/github/last-commit/vishalsh94/trackaday)](https://github.com/vishalsh94/trackaday/commits/main) [![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/vishalsh94/trackaday.svg?maxAge=2592000)](https://codecov.io/github/vishalsh94/trackaday?branch=master) [![Github](https://img.shields.io/badge/language-typescript-red.svg)](https://www.typescriptlang.org/)
 
 
 
