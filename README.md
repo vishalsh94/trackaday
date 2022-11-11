@@ -64,4 +64,10 @@ It shows you the number of hours worked per day as well as when you usually work
 ## Documentation
 https://arnab-95.github.io/ 
 
+## Team members (Group 38)
+Arnab Datta
+Vishal Sharma
+Atharva Gole
+Dakshil Kanakia
+Dhanya Dasari
 
