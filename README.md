@@ -66,8 +66,12 @@ https://arnab-95.github.io/
 
 ## Team members (Group 38)
 Arnab Datta
+
 Vishal Sharma
+
 Atharva Gole
+
 Dakshil Kanakia
+
 Dhanya Dasari
 
