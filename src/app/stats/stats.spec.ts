@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { getTaskTrackingStats, getTimeTrackingStats } from 'src/app/stats/stats';
+import { getTaskTrackingStats, getTimeTrackingStats } from './stats';
 import { AppData } from "../models/appData";
 
 var appdata = new AppData()
